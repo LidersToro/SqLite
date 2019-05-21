@@ -31,9 +31,10 @@ namespace AndroidSQLite
 
             lstData = FindViewById<ListView>(Resource.Id.listView);
 
-            var edtName = FindViewById<EditText>(Resource.Id.edtName);
-            var edtAge = FindViewById<EditText>(Resource.Id.edtAge);
-            var edtEmail = FindViewById<EditText>(Resource.Id.edtEmail);
+            var edtFecha = FindViewById<EditText>(Resource.Id.edtFecha);
+            var edtCantidad = FindViewById<EditText>(Resource.Id.edtCantidad);
+            var edtId_cliente = FindViewById<EditText>(Resource.Id.edtId_cliente);
+            var edtId_producto = FindViewById<EditText>(Resource.Id.edtId_producto);
 
             var btnAdd = FindViewById<Button>(Resource.Id.btnAdd);
             var btnEdit = FindViewById<Button>(Resource.Id.btnEdit);
@@ -46,9 +47,10 @@ namespace AndroidSQLite
             btnAdd.Click += delegate
             {
                 Person person = new Person() {
-                    Name = edtName.Text,
-                    Age = int.Parse(edtAge.Text),
-                    Email = edtEmail.Text
+                    Fecha = edtFecha.Text,
+                    Cantidad = int.Parse(edtCantidad.Text),
+                    Id_cliente = int.Parse(edtId_cliente.Text),
+                    Id_producto = int.Parse(edtId_producto.Text)
                 };
                 db.insertIntoTablePerson(person);
                 LoadData();
@@ -57,10 +59,11 @@ namespace AndroidSQLite
             btnEdit.Click += delegate {
                 Person person = new Person()
                 {
-                    Id=int.Parse(edtName.Tag.ToString()),
-                    Name = edtName.Text,
-                    Age = int.Parse(edtAge.Text),
-                    Email = edtEmail.Text
+                    Id = int.Parse(edtFecha.Tag.ToString()),
+                    Fecha = edtFecha.Text,
+                    Cantidad = int.Parse(edtCantidad.Text),
+                    Id_cliente = int.Parse(edtId_cliente.Text),
+                    Id_producto = int.Parse(edtId_producto.Text)
                 };
                 db.updateTablePerson(person);
                 LoadData();
@@ -69,10 +72,11 @@ namespace AndroidSQLite
             btnDelete.Click += delegate {
                 Person person = new Person()
                 {
-                    Id = int.Parse(edtName.Tag.ToString()),
-                    Name = edtName.Text,
-                    Age = int.Parse(edtAge.Text),
-                    Email = edtEmail.Text
+                    Id = int.Parse(edtFecha.Tag.ToString()),
+                    Fecha = edtFecha.Text,
+                    Cantidad = int.Parse(edtCantidad.Text),
+                    Id_cliente = int.Parse(edtId_cliente.Text),
+                    Id_producto = int.Parse(edtId_producto.Text),
                 };
                 db.deleteTablePerson(person);
                 LoadData();
@@ -90,16 +94,18 @@ namespace AndroidSQLite
                 }
 
                 //Binding Data
-                var txtName = e.View.FindViewById<TextView>(Resource.Id.textView1);
-                var txtAge = e.View.FindViewById<TextView>(Resource.Id.textView2);
-                var txtEmail = e.View.FindViewById<TextView>(Resource.Id.textView3);
+                var txtFecha = e.View.FindViewById<TextView>(Resource.Id.textView1);
+                var txtCantidad = e.View.FindViewById<TextView>(Resource.Id.textView2);
+                var txtId_cliente = e.View.FindViewById<TextView>(Resource.Id.textView3);
+                var txtId_producto = e.View.FindViewById<TextView>(Resource.Id.textView4);
+                edtFecha.Text = txtFecha.Text;
+                edtFecha.Tag = e.Id;
 
-                edtName.Text = txtName.Text;
-                edtName.Tag = e.Id;
+                edtCantidad.Text = txtCantidad.Text;
 
-                edtAge.Text = txtAge.Text;
+                edtId_cliente.Text = txtId_cliente.Text;
 
-                edtEmail.Text = txtEmail.Text;
+                edtId_producto.Text = txtId_producto.Text;
 
             };
 

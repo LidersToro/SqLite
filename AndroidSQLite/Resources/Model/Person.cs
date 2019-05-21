@@ -17,8 +17,9 @@ namespace AndroidSQLite.Resources.Model
     {
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Email { get; set; }
+        public string Fecha { get; set; }
+        public int Cantidad { get; set; }
+        public int Id_cliente { get; set; }
+        public int Id_producto { get; set; }
     }
 }

@@ -75,7 +75,7 @@ namespace AndroidSQLite.Resources.DataHelper
             {
                 using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, "Persons.db")))
                 {
-                    connection.Query<Person>("UPDATE Person set Name=?,Age=?,Email=? Where Id=?",person.Name,person.Age,person.Email,person.Id);
+                    connection.Query<Person>("UPDATE Person set Fecha=?,Cantidad=?,Id_cliente=?, Id_producto=? Where Id=?",person.Fecha,person.Cantidad,person.Id_cliente,person.Id_producto,person.Id);
                     return true;
                 }
             }

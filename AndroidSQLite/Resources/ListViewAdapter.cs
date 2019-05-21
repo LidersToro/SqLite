@@ -16,9 +16,10 @@ namespace AndroidSQLite.Resources
 {
     public class ViewHolder : Java.Lang.Object
     {
-        public TextView txtName { get; set; }
-        public TextView txtAge { get; set; }
-        public TextView txtEmail { get; set; }
+        public TextView txtFecha { get; set; }
+        public TextView txtCantidad { get; set; }
+        public TextView txtId_cliente { get; set; }
+        public TextView txtId_producto { get; set; }
     }
     public class ListViewAdapter:BaseAdapter
     {
@@ -52,13 +53,15 @@ namespace AndroidSQLite.Resources
         {
             var view = convertView ?? activity.LayoutInflater.Inflate(Resource.Layout.list_view_dataTemplate, parent, false);
 
-            var txtName = view.FindViewById<TextView>(Resource.Id.textView1);
-            var txtAge = view.FindViewById<TextView>(Resource.Id.textView2);
-            var txtEmail = view.FindViewById<TextView>(Resource.Id.textView3);
+            var txtFecha = view.FindViewById<TextView>(Resource.Id.textView1);
+            var txtCantidad = view.FindViewById<TextView>(Resource.Id.textView2);
+            var txtId_cliente = view.FindViewById<TextView>(Resource.Id.textView3);
+            var txtId_producto = view.FindViewById<TextView>(Resource.Id.textView4);
 
-            txtName.Text = lstPerson[position].Name;
-            txtAge.Text = ""+lstPerson[position].Age;
-            txtEmail.Text = lstPerson[position].Email;
+            txtFecha.Text = lstPerson[position].Fecha;
+            txtCantidad.Text = ""+lstPerson[position].Cantidad;
+            txtId_cliente.Text = ""+lstPerson[position].Id_cliente;
+            txtId_producto.Text = ""+lstPerson[position].Id_producto;
 
             return view;
         }
